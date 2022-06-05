@@ -95,6 +95,15 @@ window.addEventListener('load', ()=>{
 
     })
     
+    encryptInput.addEventListener('click', (event)=>{
+        
+        let lastInfo = event.target.value
+        
+        event.target.value = null
+
+        event.target.value = lastInfo 
+
+    })
 
     const animacionDeInicio = ()=>{
         
@@ -104,25 +113,23 @@ window.addEventListener('load', ()=>{
 
         let i = 0
 
+
         let interval = setInterval(()=>{
 
             let index = correctKeys.indexOf(message[i])
             
-            console.log(index, message[i])
-
+            // console.log(index, message[i])
             
             encryptInput.value += message[i]
+            
             createEncryptedElement(index, message[i])
 
-
-            
             
 
             i++
             if( i >= message.length) clearInterval(interval)
             
-        },200)
-        
+        },200)  
 
     }
     

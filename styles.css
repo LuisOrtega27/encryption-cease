@@ -33,6 +33,7 @@ body{
 }
 
 .encryption-area{
+    /* text-align: left; */
     font-size: 3em;
     margin-bottom: 50px;
     min-height: 50px;
@@ -42,7 +43,7 @@ body{
 
 .letter{
     position: relative;
-    border-bottom: solid 2px #2e2;
+    border-bottom: solid 2px #2e25;
     color: #2e2;
     padding: 0 5px;
     margin-right: 5px;
