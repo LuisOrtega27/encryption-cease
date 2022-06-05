@@ -1,3 +1,5 @@
+'use strict'
+
 window.addEventListener('load', ()=>{
 
     const encryptInput = document.querySelector('#encrypt-input')
@@ -8,12 +10,12 @@ window.addEventListener('load', ()=>{
 
 
     // estas son las keys que accionan el script
-    const correctKeys= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z', 'Backspace', ' ', "?", "(", ")", "'", "'", "/", ">", "<",]
+    const correctKeys= ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'Backspace', ' ', ".", ",", ":", ";", "?", "(", ")", "'", "'", "/", ">", "<", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",]
     
 
 
     // y este array es con el que se hace el encriptado
-    const lettersList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'z']
+    const lettersList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
 
@@ -25,7 +27,7 @@ window.addEventListener('load', ()=>{
 
             return '-'
 
-        }else if(index > 27){
+        }else if(index > 28){
             
             return letter
 
@@ -33,8 +35,8 @@ window.addEventListener('load', ()=>{
             
             let newPosition = index + 3
     
-            if(newPosition > 25){
-                newPosition = newPosition - 26
+            if(newPosition > 26){
+                newPosition = newPosition - 27
             }
             
             // console.log(`N: ${newPosition}`, `N: ${lettersList[newPosition]}`)
@@ -83,7 +85,7 @@ window.addEventListener('load', ()=>{
     }
     
     
-    encryptInput.addEventListener('keyup', (event)=>{
+    encryptInput.addEventListener('keydown', (event)=>{
         
         let letter = event.key
 
@@ -93,5 +95,36 @@ window.addEventListener('load', ()=>{
 
     })
     
+
+    const animacionDeInicio = ()=>{
+        
+        let message = 'encriptador cesar'
+
+        message = Array.from(message)
+
+        let i = 0
+
+        let interval = setInterval(()=>{
+
+            let index = correctKeys.indexOf(message[i])
+            
+            console.log(index, message[i])
+
+            
+            encryptInput.value += message[i]
+            createEncryptedElement(index, message[i])
+
+
+            
+            
+
+            i++
+            if( i >= message.length) clearInterval(interval)
+            
+        },200)
+        
+
+    }
     
+    animacionDeInicio()
 })
